@@ -150,8 +150,8 @@ export function LiftTrackerPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
-        <div className="bg-white rounded-2xl p-8 shadow-xl">
+      <div className={`min-h-screen ${isDarkMode ? 'bg-gradient-to-br from-slate-900 to-slate-800' : 'bg-gradient-to-br from-slate-50 to-slate-100'} flex items-center justify-center`}>
+        <div className={`${isDarkMode ? 'bg-slate-800' : 'bg-white'} rounded-2xl p-8 shadow-xl`}>
           <div className="animate-spin rounded-full h-12 w-12 border-4 border-teal-600 border-t-transparent"></div>
         </div>
       </div>
@@ -159,8 +159,8 @@ export function LiftTrackerPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      <div className="bg-gradient-to-r from-teal-600 to-emerald-600 p-6 text-white shadow-xl">
+    <div className={`min-h-screen ${isDarkMode ? 'bg-gradient-to-br from-slate-900 to-slate-800' : 'bg-gradient-to-br from-slate-50 to-slate-100'} transition-colors duration-300`}>
+      <div className={`${isDarkMode ? 'bg-gradient-to-r from-slate-800 to-slate-900' : 'bg-gradient-to-r from-teal-600 to-emerald-600'} p-6 text-white shadow-xl transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto">
           <button
             onClick={() => navigate('/')}
@@ -261,7 +261,7 @@ export function LiftTrackerPage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-b-2xl shadow-xl border-x border-b border-slate-200 p-6">
+            <div className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} rounded-b-2xl shadow-xl border-x border-b p-6`}>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {recommendedLifts.map((lift, index) => {
                   const badge = getScoreBadge(lift.score);
@@ -328,8 +328,8 @@ export function LiftTrackerPage() {
           </div>
         )}
 
-        <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6">
-          <h2 className="text-2xl font-bold text-slate-800 mb-6 flex items-center space-x-2">
+        <div className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} rounded-2xl shadow-xl border p-6`}>
+          <h2 className={`text-2xl font-bold ${isDarkMode ? 'text-slate-100' : 'text-slate-800'} mb-6 flex items-center space-x-2`}>
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
             <span>Live Status - All Lifts</span>
           </h2>
@@ -343,22 +343,22 @@ export function LiftTrackerPage() {
               }, {} as Record<string, Lift[]>)
             ).map(([building, buildingLifts]) => (
               <div key={building} className="border-2 border-slate-200 rounded-xl p-5 bg-slate-50/50">
-                <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center space-x-2">
+                <h3 className={`text-lg font-bold ${isDarkMode ? 'text-slate-100' : 'text-slate-800'} mb-4 flex items-center space-x-2`}>
                   <Building2 className="text-teal-600" size={20} />
                   <span>{building}</span>
                   <span className="text-sm text-slate-500 font-normal">({buildingLifts.length} lifts)</span>
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
                   {buildingLifts.map((lift) => (
-                    <div key={lift.id} className="bg-white rounded-xl p-4 border-2 border-slate-200 hover:border-teal-300 transition-all hover:shadow-md">
+                    <div key={lift.id} className={`${isDarkMode ? 'bg-slate-900 border-slate-700 hover:border-teal-500' : 'bg-white border-slate-200 hover:border-teal-300'} rounded-xl p-4 border-2 transition-all hover:shadow-md`}>
                       <div className="flex items-center justify-between mb-3">
-                        <h4 className="font-bold text-slate-800 text-lg">{lift.lift_id}</h4>
+                        <h4 className={`font-bold ${isDarkMode ? 'text-slate-100' : 'text-slate-800'} text-lg`}>{lift.lift_id}</h4>
                       </div>
 
                       <div className="space-y-2 text-sm">
                         <div className="flex items-center justify-between">
-                          <span className="text-slate-600">Current Floor</span>
-                          <span className="font-bold text-slate-800">Floor {lift.current_floor}</span>
+                          <span className={isDarkMode ? 'text-slate-400' : 'text-slate-600'}>Current Floor</span>
+                          <span className={`font-bold ${isDarkMode ? 'text-slate-100' : 'text-slate-800'}`}>Floor {lift.current_floor}</span>
                         </div>
 
                         <div className="flex items-center justify-between">

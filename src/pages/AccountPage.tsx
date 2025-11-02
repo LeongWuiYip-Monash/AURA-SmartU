@@ -148,8 +148,8 @@ export function AccountPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      <div className="bg-gradient-to-r from-blue-600 to-cyan-600 p-6 text-white shadow-lg">
+    <div className={`min-h-screen ${isDarkMode ? 'bg-gradient-to-br from-slate-900 to-slate-800' : 'bg-gradient-to-br from-slate-50 to-slate-100'} transition-colors duration-300`}>
+      <div className={`${isDarkMode ? 'bg-gradient-to-r from-slate-800 to-slate-900' : 'bg-gradient-to-r from-blue-600 to-cyan-600'} p-6 text-white shadow-lg transition-colors duration-300`}>
         <div className="max-w-4xl mx-auto">
           <button
             onClick={() => navigate('/')}
@@ -172,7 +172,7 @@ export function AccountPage() {
       </div>
 
       <div className="max-w-4xl mx-auto p-6">
-        <div className="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden">
+        <div className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} rounded-xl shadow-lg border overflow-hidden`}>
           <div className="p-6 border-b border-slate-200">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold text-slate-800">Profile Information</h2>

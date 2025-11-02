@@ -80,8 +80,8 @@ export function EmergencyContactsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
-        <div className="bg-white rounded-2xl p-8 shadow-xl">
+      <div className={`min-h-screen ${isDarkMode ? 'bg-gradient-to-br from-slate-900 to-slate-800' : 'bg-gradient-to-br from-slate-50 to-slate-100'} flex items-center justify-center`}>
+        <div className={`${isDarkMode ? 'bg-slate-800' : 'bg-white'} rounded-2xl p-8 shadow-xl`}>
           <div className="animate-spin rounded-full h-12 w-12 border-4 border-red-600 border-t-transparent"></div>
         </div>
       </div>
@@ -89,8 +89,8 @@ export function EmergencyContactsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      <div className="bg-gradient-to-r from-red-600 to-rose-600 p-6 text-white shadow-xl">
+    <div className={`min-h-screen ${isDarkMode ? 'bg-gradient-to-br from-slate-900 to-slate-800' : 'bg-gradient-to-br from-slate-50 to-slate-100'} transition-colors duration-300`}>
+      <div className={`${isDarkMode ? 'bg-gradient-to-r from-slate-800 to-slate-900' : 'bg-gradient-to-r from-red-600 to-rose-600'} p-6 text-white shadow-xl transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto">
           <button
             onClick={() => navigate('/')}
@@ -119,7 +119,7 @@ export function EmergencyContactsPage() {
               <p className="text-red-100 mt-2">Call these numbers in case of emergency</p>
             </div>
 
-            <div className="bg-white rounded-b-2xl shadow-xl border-x border-b border-slate-200 p-6">
+            <div className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} rounded-b-2xl shadow-xl border-x border-b p-6`}>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {emergencyContacts.map((contact) => (
                   <div
@@ -183,7 +183,7 @@ export function EmergencyContactsPage() {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-b-2xl shadow-xl border-x border-b border-slate-200 p-6">
+                <div className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} rounded-b-2xl shadow-xl border-x border-b p-6`}>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {categoryContacts.map((contact) => (
                       <div

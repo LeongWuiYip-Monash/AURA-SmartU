@@ -198,8 +198,8 @@ export function TrafficStatusPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
-        <div className="bg-white rounded-2xl p-8 shadow-xl">
+      <div className={`min-h-screen ${isDarkMode ? 'bg-gradient-to-br from-slate-900 to-slate-800' : 'bg-gradient-to-br from-slate-50 to-slate-100'} flex items-center justify-center`}>
+        <div className={`${isDarkMode ? 'bg-slate-800' : 'bg-white'} rounded-2xl p-8 shadow-xl`}>
           <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-600 border-t-transparent"></div>
         </div>
       </div>
@@ -207,8 +207,8 @@ export function TrafficStatusPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      <div className="bg-gradient-to-r from-blue-600 to-cyan-600 p-6 text-white shadow-xl">
+    <div className={`min-h-screen ${isDarkMode ? 'bg-gradient-to-br from-slate-900 to-slate-800' : 'bg-gradient-to-br from-slate-50 to-slate-100'} transition-colors duration-300`}>
+      <div className={`${isDarkMode ? 'bg-gradient-to-r from-slate-800 to-slate-900' : 'bg-gradient-to-r from-blue-600 to-cyan-600'} p-6 text-white shadow-xl transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto">
           <button
             onClick={() => navigate('/')}
@@ -226,10 +226,10 @@ export function TrafficStatusPage() {
       </div>
 
       <div className="max-w-7xl mx-auto p-6">
-        <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6">
+        <div className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} rounded-2xl shadow-xl border p-6`}>
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h2 className="text-2xl font-bold text-slate-800 flex items-center space-x-2">
+              <h2 className={`text-2xl font-bold ${isDarkMode ? 'text-slate-100' : 'text-slate-800'} flex items-center space-x-2`}>
                 <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
                 <span>Live Traffic Updates</span>
               </h2>

@@ -234,8 +234,8 @@ export function UnitArrangementPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      <div className="bg-gradient-to-r from-blue-600 to-cyan-600 p-6 text-white shadow-lg">
+    <div className={`min-h-screen ${isDarkMode ? 'bg-gradient-to-br from-slate-900 to-slate-800' : 'bg-gradient-to-br from-slate-50 to-slate-100'} transition-colors duration-300`}>
+      <div className={`${isDarkMode ? 'bg-gradient-to-r from-slate-800 to-slate-900' : 'bg-gradient-to-r from-blue-600 to-cyan-600'} p-6 text-white shadow-lg transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto">
           <button
             onClick={() => navigate('/')}
@@ -259,9 +259,9 @@ export function UnitArrangementPage() {
 
       <div className="max-w-7xl mx-auto p-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 bg-white rounded-xl shadow-lg border border-slate-200 flex flex-col h-[600px]">
-            <div className="p-4 border-b border-slate-200">
-              <h2 className="text-xl font-bold text-slate-800 flex items-center space-x-2">
+          <div className={`lg:col-span-2 ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} rounded-xl shadow-lg border flex flex-col h-[600px]`}>
+            <div className={`p-4 border-b ${isDarkMode ? 'border-slate-700' : 'border-slate-200'}`}>
+              <h2 className={`text-xl font-bold ${isDarkMode ? 'text-slate-100' : 'text-slate-800'} flex items-center space-x-2`}>
                 <Sparkles className="text-blue-600" size={20} />
                 <span>AI Course Advisor</span>
               </h2>

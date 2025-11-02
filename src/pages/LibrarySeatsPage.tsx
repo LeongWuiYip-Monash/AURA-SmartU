@@ -88,8 +88,8 @@ export function LibrarySeatsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
-        <div className="bg-white rounded-2xl p-8 shadow-xl">
+      <div className={`min-h-screen ${isDarkMode ? 'bg-gradient-to-br from-slate-900 to-slate-800' : 'bg-gradient-to-br from-slate-50 to-slate-100'} flex items-center justify-center`}>
+        <div className={`${isDarkMode ? 'bg-slate-800' : 'bg-white'} rounded-2xl p-8 shadow-xl`}>
           <div className="animate-spin rounded-full h-12 w-12 border-4 border-amber-600 border-t-transparent"></div>
         </div>
       </div>
@@ -99,8 +99,8 @@ export function LibrarySeatsPage() {
   const floorGroups = groupByFloor(librarySeats);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      <div className="bg-gradient-to-r from-amber-600 to-orange-600 p-6 text-white shadow-xl">
+    <div className={`min-h-screen ${isDarkMode ? 'bg-gradient-to-br from-slate-900 to-slate-800' : 'bg-gradient-to-br from-slate-50 to-slate-100'} transition-colors duration-300`}>
+      <div className={`${isDarkMode ? 'bg-gradient-to-r from-slate-800 to-slate-900' : 'bg-gradient-to-r from-amber-600 to-orange-600'} p-6 text-white shadow-xl transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto">
           <button
             onClick={() => navigate('/')}
@@ -132,7 +132,7 @@ export function LibrarySeatsPage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-b-2xl shadow-xl border-x border-b border-slate-200 p-6">
+            <div className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} rounded-b-2xl shadow-xl border-x border-b p-6`}>
               <div className={`border-3 rounded-2xl p-6 ${getAvailabilityColor(recommendedZone.available_seats, recommendedZone.total_seats)}`}>
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-3">
@@ -187,19 +187,19 @@ export function LibrarySeatsPage() {
           </div>
         )}
 
-        <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6">
-          <h2 className="text-2xl font-bold text-slate-800 mb-6 flex items-center space-x-2">
+        <div className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} rounded-2xl shadow-xl border p-6`}>
+          <h2 className={`text-2xl font-bold ${isDarkMode ? 'text-slate-100' : 'text-slate-800'} mb-6 flex items-center space-x-2`}>
             <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
             <span>All Library Zones</span>
           </h2>
 
           <div className="space-y-6">
             {Object.entries(floorGroups).map(([floor, zones]) => (
-              <div key={floor} className="border-2 border-slate-200 rounded-xl p-5 bg-slate-50/50">
-                <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center space-x-2">
+              <div key={floor} className={`border-2 ${isDarkMode ? 'border-slate-700 bg-slate-900/50' : 'border-slate-200 bg-slate-50/50'} rounded-xl p-5`}>
+                <h3 className={`text-lg font-bold ${isDarkMode ? 'text-slate-100' : 'text-slate-800'} mb-4 flex items-center space-x-2`}>
                   <Layers className="text-amber-600" size={20} />
                   <span>Floor {floor}</span>
-                  <span className="text-sm text-slate-500 font-normal">({zones.length} zones)</span>
+                  <span className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'} font-normal`}>({zones.length} zones)</span>
                 </h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
