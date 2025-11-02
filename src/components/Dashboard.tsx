@@ -4,8 +4,8 @@ import { UserCircle2, School, ArrowUpDown, Car, ParkingSquare, BookOpen, Utensil
 import { VoiceAssistant } from './VoiceAssistant';
 import { useState, useEffect } from 'react';
 import { predictNextHour, Prediction } from '../services/predictionService';
-import taylorsLogo from '../assets/taylors-logo-01.jpg';
-import sunwayLogo from '../assets/Sunway_logo.jpg';
+import taylorsLogo from '../assets/taylors-logo-01.png';
+import sunwayLogo from '../assets/Sunway_logo.png';
 import monashLogo from '../assets/monash-logo-v2.png';
 
 const universityLogos: Record<string, string> = {
