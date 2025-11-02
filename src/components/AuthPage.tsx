@@ -185,18 +185,37 @@ export function AuthPage({ onAuthSuccess }: AuthPageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-cyan-600 to-teal-600 flex items-center justify-center p-4 relative overflow-hidden">
-      <div className="absolute inset-0 flex items-center justify-center opacity-10">
+    <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 via-teal-50 to-cyan-100"></div>
+      <div className="absolute inset-0 flex items-center justify-center opacity-20">
         <div className="grid grid-cols-3 gap-8 p-8">
-          <img src={taylorsLogo} alt="Taylor's University" className="w-48 h-48 object-contain" />
-          <img src={monashLogo} alt="Monash University" className="w-48 h-48 object-contain" />
-          <img src={sunwayLogo} alt="Sunway University" className="w-48 h-48 object-contain" />
-          <img src={sunwayLogo} alt="Sunway University" className="w-48 h-48 object-contain" />
-          <img src={taylorsLogo} alt="Taylor's University" className="w-48 h-48 object-contain" />
-          <img src={monashLogo} alt="Monash University" className="w-48 h-48 object-contain" />
-          <img src={monashLogo} alt="Monash University" className="w-48 h-48 object-contain" />
-          <img src={sunwayLogo} alt="Sunway University" className="w-48 h-48 object-contain" />
-          <img src={taylorsLogo} alt="Taylor's University" className="w-48 h-48 object-contain" />
+          <div className="w-48 h-48 bg-gradient-to-br from-red-50 to-orange-100 rounded-lg flex items-center justify-center p-4">
+            <img src={taylorsLogo} alt="Taylor's University" className="w-full h-full object-contain" />
+          </div>
+          <div className="w-48 h-48 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg flex items-center justify-center p-4">
+            <img src={monashLogo} alt="Monash University" className="w-full h-full object-contain" />
+          </div>
+          <div className="w-48 h-48 bg-gradient-to-br from-yellow-50 to-amber-100 rounded-lg flex items-center justify-center p-4">
+            <img src={sunwayLogo} alt="Sunway University" className="w-full h-full object-contain" />
+          </div>
+          <div className="w-48 h-48 bg-gradient-to-br from-yellow-50 to-amber-100 rounded-lg flex items-center justify-center p-4">
+            <img src={sunwayLogo} alt="Sunway University" className="w-full h-full object-contain" />
+          </div>
+          <div className="w-48 h-48 bg-gradient-to-br from-red-50 to-orange-100 rounded-lg flex items-center justify-center p-4">
+            <img src={taylorsLogo} alt="Taylor's University" className="w-full h-full object-contain" />
+          </div>
+          <div className="w-48 h-48 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg flex items-center justify-center p-4">
+            <img src={monashLogo} alt="Monash University" className="w-full h-full object-contain" />
+          </div>
+          <div className="w-48 h-48 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg flex items-center justify-center p-4">
+            <img src={monashLogo} alt="Monash University" className="w-full h-full object-contain" />
+          </div>
+          <div className="w-48 h-48 bg-gradient-to-br from-yellow-50 to-amber-100 rounded-lg flex items-center justify-center p-4">
+            <img src={sunwayLogo} alt="Sunway University" className="w-full h-full object-contain" />
+          </div>
+          <div className="w-48 h-48 bg-gradient-to-br from-red-50 to-orange-100 rounded-lg flex items-center justify-center p-4">
+            <img src={taylorsLogo} alt="Taylor's University" className="w-full h-full object-contain" />
+          </div>
         </div>
       </div>
 
