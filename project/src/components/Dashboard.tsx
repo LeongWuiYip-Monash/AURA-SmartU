@@ -5,7 +5,7 @@ import { VoiceAssistant } from './VoiceAssistant';
 import { useState, useEffect } from 'react';
 import { predictNextHour, Prediction } from '../services/predictionService';
 import taylorsLogo from '../assets/taylors-logo-01.jpg';
-import monashLogo from '../assets/monash-logo-v2 copy copy.png';
+import monashLogo from '../assets/monash-logo-v2.png';
 import sunwayLogo from '../assets/Sunway_logo.jpg';
 
 const universityLogos: Record<string, string> = {
