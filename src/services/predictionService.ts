@@ -16,7 +16,7 @@ export async function predictNextHour(): Promise<Prediction> {
       message: 'Weekend - Minimal campus activity expected',
       severity: 'low',
       icon: 'general',
-      confidence: 0.90
+      confidence: 0.85
     };
   }
 
@@ -25,7 +25,7 @@ export async function predictNextHour(): Promise<Prediction> {
       message: 'Morning rush hour - parking and lifts will be very busy',
       severity: 'high',
       icon: 'parking',
-      confidence: 0.92
+      confidence: 0.78
     };
   }
 
@@ -34,7 +34,7 @@ export async function predictNextHour(): Promise<Prediction> {
       message: 'Peak lunch period - canteen extremely crowded, long queues expected',
       severity: 'high',
       icon: 'general',
-      confidence: 0.90
+      confidence: 0.82
     };
   }
 
@@ -43,7 +43,7 @@ export async function predictNextHour(): Promise<Prediction> {
       message: 'Evening rush - heavy traffic leaving campus, parking clearing out',
       severity: 'high',
       icon: 'traffic',
-      confidence: 0.88
+      confidence: 0.76
     };
   }
 
@@ -52,7 +52,7 @@ export async function predictNextHour(): Promise<Prediction> {
       message: 'Mid-morning - moderate activity, classes in session',
       severity: 'medium',
       icon: 'general',
-      confidence: 0.80
+      confidence: 0.72
     };
   }
 
@@ -61,7 +61,7 @@ export async function predictNextHour(): Promise<Prediction> {
       message: 'Afternoon classes - steady campus activity',
       severity: 'medium',
       icon: 'general',
-      confidence: 0.82
+      confidence: 0.74
     };
   }
 
@@ -70,7 +70,7 @@ export async function predictNextHour(): Promise<Prediction> {
       message: 'Late evening/Early morning - minimal activity, campus mostly quiet',
       severity: 'low',
       icon: 'general',
-      confidence: 0.95
+      confidence: 0.88
     };
   }
 
@@ -78,6 +78,6 @@ export async function predictNextHour(): Promise<Prediction> {
     message: 'Normal campus activity expected',
     severity: 'low',
     icon: 'general',
-    confidence: 0.75
+    confidence: 0.68
   };
 }
