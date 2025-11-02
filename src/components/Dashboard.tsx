@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
-import { UserCircle2, School, ArrowUpDown, Car, ParkingSquare, BookOpen, Utensils, CalendarDays, Phone, Clock, AlertTriangle, Zap, TrendingUp } from 'lucide-react';
+import { UserCircle2, School, ArrowUpDown, Car, ParkingSquare, BookOpen, Utensils, CalendarDays, Phone, Clock, AlertTriangle, Zap, TrendingUp, Moon, Sun } from 'lucide-react';
 import { VoiceAssistant } from './VoiceAssistant';
 import { useState, useEffect } from 'react';
 import { predictNextHour, Prediction } from '../services/predictionService';
@@ -33,10 +33,12 @@ interface Alert {
 export function Dashboard() {
   const navigate = useNavigate();
   const [universityCode, setUniversityCode] = useState<string>('');
+  const [userName, setUserName] = useState<string>('');
   const [currentTime, setCurrentTime] = useState(new Date());
   const [currentAlert, setCurrentAlert] = useState<Alert | null>(null);
   const [aiPrediction, setAiPrediction] = useState<Prediction | null>(null);
   const [isLoadingPrediction, setIsLoadingPrediction] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     fetchUserUniversity();
@@ -94,19 +96,23 @@ export function Dashboard() {
 
     const { data: profile } = await supabase
       .from('user_profiles')
-      .select('university_id')
+      .select('name, university_id')
       .eq('id', user.id)
       .maybeSingle();
 
-    if (profile?.university_id) {
-      const { data: university } = await supabase
-        .from('universities')
-        .select('code')
-        .eq('id', profile.university_id)
-        .maybeSingle();
+    if (profile) {
+      setUserName(profile.name || 'User');
 
-      if (university) {
-        setUniversityCode(university.code);
+      if (profile.university_id) {
+        const { data: university } = await supabase
+          .from('universities')
+          .select('code')
+          .eq('id', profile.university_id)
+          .maybeSingle();
+
+        if (university) {
+          setUniversityCode(university.code);
+        }
       }
     }
   };
@@ -187,6 +193,13 @@ export function Dashboard() {
     }
   };
 
+  const getGreeting = () => {
+    const hour = currentTime.getHours();
+    if (hour < 12) return 'Good morning';
+    if (hour < 18) return 'Good afternoon';
+    return 'Good evening';
+  };
+
   const universityLogo = universityCode ? universityLogos[universityCode] : null;
 
   return (
@@ -202,22 +215,33 @@ export function Dashboard() {
           }}
         />
       )}
-      <nav className="bg-white shadow-lg border-b border-slate-200 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                AURA - SmartU
+      <div className="bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 shadow-2xl relative z-10">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex justify-between items-center mb-4">
+            <div className="flex items-center space-x-3">
+              {universityLogo && (
+                <img src={universityLogo} alt="University" className="h-10 w-auto object-contain" />
+              )}
+              <div className="h-8 w-px bg-white/30"></div>
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                AURA
               </h1>
             </div>
 
             <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2 px-4 py-2 bg-slate-100 rounded-lg border border-slate-200">
-                <Clock className="text-blue-600" size={20} />
-                <span className="text-sm font-semibold text-slate-800">
+              <div className="flex items-center space-x-2 px-4 py-2 bg-white/10 rounded-lg border border-white/20 backdrop-blur-sm">
+                <Clock className="text-cyan-400" size={20} />
+                <span className="text-sm font-semibold text-white">
                   {currentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true })}
                 </span>
               </div>
+              <button
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                className="w-10 h-10 rounded-lg bg-white/10 border border-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-all"
+                title="Toggle Dark Mode"
+              >
+                {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
               <button
                 onClick={() => navigate('/account')}
                 className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white hover:from-blue-600 hover:to-cyan-600 transition-all shadow-md hover:shadow-lg"
@@ -227,11 +251,11 @@ export function Dashboard() {
               </button>
             </div>
           </div>
-        </div>
-      </nav>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
-        <div className="space-y-8">
+          <div className="text-white mb-4">
+            <h2 className="text-2xl font-bold">{getGreeting()}, {userName}</h2>
+          </div>
+
           {aiPrediction && (
             <div className={`rounded-xl border-2 p-4 ${getAlertColor(aiPrediction.severity)} shadow-lg animate-fade-in relative overflow-hidden`}>
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/20 to-transparent rounded-bl-full"></div>
@@ -264,16 +288,20 @@ export function Dashboard() {
           )}
 
           {isLoadingPrediction && !aiPrediction && (
-            <div className="rounded-xl border-2 p-4 bg-slate-50 border-slate-200 shadow-md animate-pulse">
+            <div className="rounded-xl border-2 p-4 bg-white/10 border-white/20 shadow-md animate-pulse backdrop-blur-sm">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-lg bg-slate-200"></div>
+                <div className="w-10 h-10 rounded-lg bg-white/20"></div>
                 <div className="flex-1">
-                  <div className="h-4 bg-slate-200 rounded w-3/4"></div>
+                  <div className="h-4 bg-white/20 rounded w-3/4"></div>
                 </div>
               </div>
             </div>
           )}
+        </nav>
+      </div>
 
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+        <div className="space-y-8">
           {currentAlert && (
             <div className={`rounded-xl border-2 p-4 ${getAlertColor(currentAlert.severity)} shadow-md animate-fade-in`}>
               <div className="flex items-center space-x-3">
