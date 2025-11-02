@@ -1,12 +1,9 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
 import { GraduationCap, Mail, Phone, Building2, User, Lock, AlertCircle, Key } from 'lucide-react';
-
-const universityImages = [
-  'https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?auto=compress&cs=tinysrgb&w=300',
-  'https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg?auto=compress&cs=tinysrgb&w=300',
-  'https://images.pexels.com/photos/1454360/pexels-photo-1454360.jpeg?auto=compress&cs=tinysrgb&w=300'
-];
+import taylorsLogo from '../assets/taylors-logo-01.jpg';
+import sunwayLogo from '../assets/Sunway_logo.jpg';
+import monashLogo from '../assets/monash-logo-v2.png';
 
 interface AuthPageProps {
   onAuthSuccess: () => void;
@@ -191,9 +188,15 @@ export function AuthPage({ onAuthSuccess }: AuthPageProps) {
     <div className="min-h-screen bg-gradient-to-br from-blue-600 via-cyan-600 to-teal-600 flex items-center justify-center p-4 relative overflow-hidden">
       <div className="absolute inset-0 flex items-center justify-center opacity-10">
         <div className="grid grid-cols-3 gap-8 p-8">
-          {[0, 1, 2, 2, 0, 1, 1, 2, 0].map((idx, i) => (
-            <img key={i} src={universityImages[idx]} alt="University" className="w-48 h-48 object-cover rounded-lg" />
-          ))}
+          <img src={taylorsLogo} alt="Taylor's University" className="w-48 h-48 object-contain" />
+          <img src={monashLogo} alt="Monash University" className="w-48 h-48 object-contain" />
+          <img src={sunwayLogo} alt="Sunway University" className="w-48 h-48 object-contain" />
+          <img src={sunwayLogo} alt="Sunway University" className="w-48 h-48 object-contain" />
+          <img src={taylorsLogo} alt="Taylor's University" className="w-48 h-48 object-contain" />
+          <img src={monashLogo} alt="Monash University" className="w-48 h-48 object-contain" />
+          <img src={monashLogo} alt="Monash University" className="w-48 h-48 object-contain" />
+          <img src={sunwayLogo} alt="Sunway University" className="w-48 h-48 object-contain" />
+          <img src={taylorsLogo} alt="Taylor's University" className="w-48 h-48 object-contain" />
         </div>
       </div>
 

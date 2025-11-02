@@ -4,14 +4,16 @@ import { UserCircle2, School, ArrowUpDown, Car, ParkingSquare, BookOpen, Utensil
 import { VoiceAssistant } from './VoiceAssistant';
 import { useState, useEffect } from 'react';
 import { predictNextHour, Prediction } from '../services/predictionService';
-const defaultLogo = 'https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?auto=compress&cs=tinysrgb&w=300';
+import taylorsLogo from '../assets/taylors-logo-01.jpg';
+import sunwayLogo from '../assets/Sunway_logo.jpg';
+import monashLogo from '../assets/monash-logo-v2.png';
 
 const universityLogos: Record<string, string> = {
-  'TAYLOR': defaultLogo,
-  'TAYLORS': defaultLogo,
-  'MONASH': defaultLogo,
-  'SUNWAY': defaultLogo,
-  'DEMO': defaultLogo,
+  'TAYLOR': taylorsLogo,
+  'TAYLORS': taylorsLogo,
+  'MONASH': monashLogo,
+  'SUNWAY': sunwayLogo,
+  'DEMO': taylorsLogo,
 };
 
 interface Alert {
