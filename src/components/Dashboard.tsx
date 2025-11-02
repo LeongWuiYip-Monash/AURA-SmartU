@@ -203,7 +203,7 @@ export function Dashboard() {
   const universityLogo = universityCode ? universityLogos[universityCode] : null;
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br ${universityGradients[universityCode] || 'from-slate-50 to-slate-100'} relative overflow-hidden`}>
+    <div className={`min-h-screen ${isDarkMode ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900' : `bg-gradient-to-br ${universityGradients[universityCode] || 'from-slate-50 to-slate-100'}`} relative overflow-hidden transition-colors duration-300`}>
       {universityLogo && (
         <div
           className="absolute inset-0 opacity-20 pointer-events-none"
@@ -215,7 +215,7 @@ export function Dashboard() {
           }}
         />
       )}
-      <div className="bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 shadow-2xl relative z-10">
+      <div className={`${isDarkMode ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-black' : 'bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900'} shadow-2xl relative z-10 transition-colors duration-300`}>
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center mb-4">
             <div className="flex items-center space-x-3">
@@ -324,105 +324,105 @@ export function Dashboard() {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
         <div className="space-y-8">
-          <div>
-            <h2 className="text-3xl font-bold text-slate-800 mb-2">Campus Overview</h2>
-            <p className="text-slate-600">Quick access to campus facilities</p>
+          <div className={isDarkMode ? 'text-slate-200' : ''}>
+            <h2 className={`text-3xl font-bold mb-2 ${isDarkMode ? 'text-slate-100' : 'text-slate-800'}`}>Campus Overview</h2>
+            <p className={isDarkMode ? 'text-slate-400' : 'text-slate-600'}>Quick access to campus facilities</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <button
               onClick={() => navigate('/classrooms')}
-              className="bg-white rounded-xl shadow-lg p-8 border border-slate-200 hover:shadow-xl hover:scale-105 transition-all group"
+              className={`${isDarkMode ? 'bg-slate-800 border-slate-700 hover:bg-slate-750' : 'bg-white border-slate-200'} rounded-xl shadow-lg p-8 border hover:shadow-xl hover:scale-105 transition-all group`}
             >
               <div className="flex flex-col items-center space-y-4">
                 <div className="w-24 h-24 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl flex items-center justify-center group-hover:from-blue-200 group-hover:to-cyan-200 transition-all">
                   <School className="text-blue-600" size={48} />
                 </div>
-                <span className="text-xl font-bold text-slate-800">Smart Classroom Finder</span>
+                <span className={`text-xl font-bold ${isDarkMode ? 'text-slate-100' : 'text-slate-800'}`}>Smart Classroom Finder</span>
               </div>
             </button>
 
             <button
               onClick={() => navigate('/lift-tracker')}
-              className="bg-white rounded-xl shadow-lg p-8 border border-slate-200 hover:shadow-xl hover:scale-105 transition-all group"
+              className={`${isDarkMode ? 'bg-slate-800 border-slate-700 hover:bg-slate-750' : 'bg-white border-slate-200'} rounded-xl shadow-lg p-8 border hover:shadow-xl hover:scale-105 transition-all group`}
             >
               <div className="flex flex-col items-center space-y-4">
                 <div className="w-24 h-24 bg-gradient-to-br from-teal-100 to-green-100 rounded-2xl flex items-center justify-center group-hover:from-teal-200 group-hover:to-green-200 transition-all">
                   <ArrowUpDown className="text-teal-600" size={48} />
                 </div>
-                <span className="text-xl font-bold text-slate-800">Lift Recommender</span>
+                <span className={`text-xl font-bold ${isDarkMode ? 'text-slate-100' : 'text-slate-800'}`}>Lift Recommender</span>
               </div>
             </button>
 
             <button
               onClick={() => navigate('/traffic-status')}
-              className="bg-white rounded-xl shadow-lg p-8 border border-slate-200 hover:shadow-xl hover:scale-105 transition-all group"
+              className={`${isDarkMode ? 'bg-slate-800 border-slate-700 hover:bg-slate-750' : 'bg-white border-slate-200'} rounded-xl shadow-lg p-8 border hover:shadow-xl hover:scale-105 transition-all group`}
             >
               <div className="flex flex-col items-center space-y-4">
                 <div className="w-24 h-24 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl flex items-center justify-center group-hover:from-blue-200 group-hover:to-cyan-200 transition-all">
                   <Car className="text-blue-600" size={48} />
                 </div>
-                <span className="text-xl font-bold text-slate-800">Traffic Status</span>
+                <span className={`text-xl font-bold ${isDarkMode ? 'text-slate-100' : 'text-slate-800'}`}>Traffic Status</span>
               </div>
             </button>
 
             <button
               onClick={() => navigate('/parking')}
-              className="bg-white rounded-xl shadow-lg p-8 border border-slate-200 hover:shadow-xl hover:scale-105 transition-all group"
+              className={`${isDarkMode ? 'bg-slate-800 border-slate-700 hover:bg-slate-750' : 'bg-white border-slate-200'} rounded-xl shadow-lg p-8 border hover:shadow-xl hover:scale-105 transition-all group`}
             >
               <div className="flex flex-col items-center space-y-4">
                 <div className="w-24 h-24 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl flex items-center justify-center group-hover:from-blue-200 group-hover:to-indigo-200 transition-all">
                   <ParkingSquare className="text-blue-600" size={48} />
                 </div>
-                <span className="text-xl font-bold text-slate-800">Parking</span>
+                <span className={`text-xl font-bold ${isDarkMode ? 'text-slate-100' : 'text-slate-800'}`}>Parking</span>
               </div>
             </button>
 
             <button
               onClick={() => navigate('/library-seats')}
-              className="bg-white rounded-xl shadow-lg p-8 border border-slate-200 hover:shadow-xl hover:scale-105 transition-all group"
+              className={`${isDarkMode ? 'bg-slate-800 border-slate-700 hover:bg-slate-750' : 'bg-white border-slate-200'} rounded-xl shadow-lg p-8 border hover:shadow-xl hover:scale-105 transition-all group`}
             >
               <div className="flex flex-col items-center space-y-4">
                 <div className="w-24 h-24 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl flex items-center justify-center group-hover:from-amber-200 group-hover:to-orange-200 transition-all">
                   <BookOpen className="text-amber-600" size={48} />
                 </div>
-                <span className="text-xl font-bold text-slate-800">Library Seats</span>
+                <span className={`text-xl font-bold ${isDarkMode ? 'text-slate-100' : 'text-slate-800'}`}>Library Seats</span>
               </div>
             </button>
 
             <button
               onClick={() => navigate('/canteen-seats')}
-              className="bg-white rounded-xl shadow-lg p-8 border border-slate-200 hover:shadow-xl hover:scale-105 transition-all group"
+              className={`${isDarkMode ? 'bg-slate-800 border-slate-700 hover:bg-slate-750' : 'bg-white border-slate-200'} rounded-xl shadow-lg p-8 border hover:shadow-xl hover:scale-105 transition-all group`}
             >
               <div className="flex flex-col items-center space-y-4">
                 <div className="w-24 h-24 bg-gradient-to-br from-rose-100 to-pink-100 rounded-2xl flex items-center justify-center group-hover:from-rose-200 group-hover:to-pink-200 transition-all">
                   <Utensils className="text-rose-600" size={48} />
                 </div>
-                <span className="text-xl font-bold text-slate-800">Canteen Seats</span>
+                <span className={`text-xl font-bold ${isDarkMode ? 'text-slate-100' : 'text-slate-800'}`}>Canteen Seats</span>
               </div>
             </button>
 
             <button
               onClick={() => navigate('/unit-arrangement')}
-              className="bg-white rounded-xl shadow-lg p-8 border border-slate-200 hover:shadow-xl hover:scale-105 transition-all group"
+              className={`${isDarkMode ? 'bg-slate-800 border-slate-700 hover:bg-slate-750' : 'bg-white border-slate-200'} rounded-xl shadow-lg p-8 border hover:shadow-xl hover:scale-105 transition-all group`}
             >
               <div className="flex flex-col items-center space-y-4">
                 <div className="w-24 h-24 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-2xl flex items-center justify-center group-hover:from-indigo-200 group-hover:to-blue-200 transition-all">
                   <CalendarDays className="text-indigo-600" size={48} />
                 </div>
-                <span className="text-xl font-bold text-slate-800">Adaptive Study Planner</span>
+                <span className={`text-xl font-bold ${isDarkMode ? 'text-slate-100' : 'text-slate-800'}`}>Adaptive Study Planner</span>
               </div>
             </button>
 
             <button
               onClick={() => navigate('/emergency-contacts')}
-              className="bg-white rounded-xl shadow-lg p-8 border border-slate-200 hover:shadow-xl hover:scale-105 transition-all group"
+              className={`${isDarkMode ? 'bg-slate-800 border-slate-700 hover:bg-slate-750' : 'bg-white border-slate-200'} rounded-xl shadow-lg p-8 border hover:shadow-xl hover:scale-105 transition-all group`}
             >
               <div className="flex flex-col items-center space-y-4">
                 <div className="w-24 h-24 bg-gradient-to-br from-red-100 to-rose-100 rounded-2xl flex items-center justify-center group-hover:from-red-200 group-hover:to-rose-200 transition-all">
                   <Phone className="text-red-600" size={48} />
                 </div>
-                <span className="text-xl font-bold text-slate-800">Emergency Contacts</span>
+                <span className={`text-xl font-bold ${isDarkMode ? 'text-slate-100' : 'text-slate-800'}`}>Emergency Contacts</span>
               </div>
             </button>
           </div>

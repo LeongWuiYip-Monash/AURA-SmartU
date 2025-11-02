@@ -6,7 +6,20 @@ export interface Prediction {
 }
 
 export async function predictNextHour(): Promise<Prediction> {
-  const hour = new Date().getHours();
+  const now = new Date();
+  const hour = now.getHours();
+  const day = now.getDay();
+  const isWeekend = day === 0 || day === 6;
+
+  if (isWeekend) {
+    return {
+      message: 'Weekend - Minimal campus activity expected',
+      severity: 'low',
+      icon: 'general',
+      confidence: 0.90
+    };
+  }
+
   const predictions = [
     { time: [7, 8, 9], message: 'Morning rush expected - parking and lifts will be busy', severity: 'high' as const, icon: 'parking' as const },
     { time: [12, 13], message: 'Lunch hour approaching - canteen will be crowded', severity: 'medium' as const, icon: 'general' as const },
